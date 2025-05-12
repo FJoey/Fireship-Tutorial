@@ -4,8 +4,16 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  int count = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +24,19 @@ class MyApp extends StatelessWidget {
           title: const Text('Flutter is Fun!'),
         ),
 
-        body: ListView.builder(
-          itemBuilder: (_, index) {
-            return Container(
-              decoration: BoxDecoration(border: Border.all()),
-              width: 500,
-              height: 500
-            );
-          }
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            setState(() {
+              count++;
+            });
+          },
+        ),
+        body: Center(
+          child: Text(
+            '$count',
+            style: TextStyle(fontSize: 60),
+          ),
         ),
       ),
     );
