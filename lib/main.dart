@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-void main(){
-
-  runApp( MyApp() );
-
+void main() {
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,22 +10,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
       home: Scaffold(
-        appBar: AppBar(backgroundColor: Colors.green,
-        title: const Text('Flutter is Fun!'),
+        appBar: AppBar(
+          backgroundColor: Colors.green,
+          title: const Text('Flutter is Fun!'),
         ),
 
-        body: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: const [
-            Expanded(
-              flex: 4,
-              child: Icon(Icons.backpack)
-              ),
-            Icon(Icons.leaderboard),
-            Icon(Icons.person),
+        body: Stack(
+          children: [
+            Container(
+              color: Colors.red,
+              width: 100,
+              height: 100,
+            ),  
+            Positioned(
+              child: Icon(Icons.verified),
+              top: 25,
+              left: 25,
+            )
           ],
         ),
       ),
