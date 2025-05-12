@@ -4,50 +4,51 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  Widget build(BuildContext context) {
+    return MaterialApp( 
+      home: new HomeScreen()
+    );
+  }
 }
 
-class _MyAppState extends State<MyApp> {
-
-  int count = 0;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override 
-  void dispose(){
-    super.dispose();
-  }
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.green,
           title: const Text('Flutter is Fun!'),
         ),
 
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
+        body: ElevatedButton(
+          child: Text('Navigate'),
           onPressed: () {
-            setState(() {
-              count++;
-            });
-          },
-        ),
-        body: Center(
-          child: Text(
-            '$count',
-            style: TextStyle(fontSize: 60),
-          ),
-        ),
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => AboutScreen(), 
+            ),
+          );
+        },
+      )
+    );
+  }
+}
+
+class AboutScreen extends StatelessWidget {
+  const AboutScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('About'),
       ),
     );
   }
