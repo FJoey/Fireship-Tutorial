@@ -18,16 +18,18 @@ class MyApp extends StatelessWidget {
         title: const Text('Flutter is Fun!'),
         ),
 
-        body: Center(
-          child: Container(
-            child: const Text('Hi Mom'),
-            margin: const EdgeInsets.all(100),
-            padding: const EdgeInsets.all(10),
-            color: Colors.red,
-            height: 100,
-            width: 100,
-          ),
-        )
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: const [
+            Expanded(
+              flex: 4,
+              child: Icon(Icons.backpack)
+              ),
+            Icon(Icons.leaderboard),
+            Icon(Icons.person),
+          ],
+        ),
       ),
     );
   }
